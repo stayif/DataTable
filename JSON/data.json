@@ -1,0 +1,152 @@
+[
+  {
+    "id": 2001,
+    "icon": "dragon",
+    "maxExp": 20,
+    "maxLevel": "=A4*10",
+    "eggRank": 1,
+    "ChestID": 15,
+    "ChestRewardInterval": 200,
+    "ItemValue": 1
+  },
+  {
+    "id": 2002,
+    "icon": "dragon",
+    "maxExp": 30,
+    "maxLevel": "=A5*10",
+    "eggRank": 2,
+    "ChestID": 15,
+    "ChestRewardInterval": 170,
+    "ItemValue": 1
+  },
+  {
+    "id": 2003,
+    "icon": "dragon",
+    "maxExp": 40,
+    "maxLevel": "=A6*10",
+    "eggRank": 2,
+    "ChestID": 15,
+    "ChestRewardInterval": 160,
+    "ItemValue": 1
+  },
+  {
+    "id": 2004,
+    "icon": "dragon",
+    "maxExp": 50,
+    "maxLevel": "=A7*10",
+    "eggRank": 3,
+    "ChestID": 15,
+    "ChestRewardInterval": 150,
+    "ItemValue": 1
+  },
+  {
+    "id": 2005,
+    "icon": "dragon",
+    "maxExp": 60,
+    "maxLevel": "=A8*10",
+    "eggRank": 3,
+    "ChestID": 15,
+    "ChestRewardInterval": 130,
+    "ItemValue": 1
+  },
+  {
+    "id": 2006,
+    "icon": "dragon",
+    "maxExp": 70,
+    "maxLevel": "=A9*10",
+    "eggRank": 3,
+    "ChestID": 15,
+    "ChestRewardInterval": 120,
+    "ItemValue": 1
+  },
+  {
+    "id": 2007,
+    "icon": "dragon",
+    "maxExp": 80,
+    "maxLevel": "=A10*10",
+    "eggRank": 4,
+    "ChestID": 15,
+    "ChestRewardInterval": 110,
+    "ItemValue": 1
+  },
+  {
+    "id": 2008,
+    "icon": "dragon",
+    "maxExp": 90,
+    "maxLevel": "=A11*10",
+    "eggRank": 4,
+    "ChestID": 15,
+    "ChestRewardInterval": 100,
+    "ItemValue": 1
+  },
+  {
+    "id": 2009,
+    "icon": "dragon",
+    "maxExp": 100,
+    "maxLevel": "=A12*10",
+    "eggRank": 4,
+    "ChestID": 15,
+    "ChestRewardInterval": 90,
+    "ItemValue": 1
+  },
+  {
+    "id": 2010,
+    "icon": "dragon",
+    "maxExp": 110,
+    "maxLevel": "=A13*10",
+    "eggRank": 4,
+    "ChestID": 15,
+    "ChestRewardInterval": 70,
+    "ItemValue": 1
+  },
+  {
+    "id": 2011,
+    "icon": "dragon",
+    "maxExp": 120,
+    "maxLevel": "=A14*10",
+    "eggRank": 5,
+    "ChestID": 15,
+    "ChestRewardInterval": 60,
+    "ItemValue": 1
+  },
+  {
+    "id": 2012,
+    "icon": "dragon",
+    "maxExp": 130,
+    "maxLevel": "=A15*10",
+    "eggRank": 5,
+    "ChestID": 15,
+    "ChestRewardInterval": 50,
+    "ItemValue": 1
+  },
+  {
+    "id": 2013,
+    "icon": "dragon",
+    "maxExp": 140,
+    "maxLevel": "=A16*10",
+    "eggRank": 5,
+    "ChestID": 15,
+    "ChestRewardInterval": 40,
+    "ItemValue": 1
+  },
+  {
+    "id": 2014,
+    "icon": "dragon",
+    "maxExp": 150,
+    "maxLevel": "=A17*10",
+    "eggRank": 5,
+    "ChestID": 15,
+    "ChestRewardInterval": 30,
+    "ItemValue": 1
+  },
+  {
+    "id": 2015,
+    "icon": "dragon",
+    "maxExp": 0,
+    "maxLevel": "=A18*10",
+    "eggRank": 5,
+    "ChestID": 15,
+    "ChestRewardInterval": 20,
+    "ItemValue": 1
+  }
+]

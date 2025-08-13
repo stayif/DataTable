@@ -7,18 +7,7 @@
             DateTime time = DateTime.Now.ToUniversalTime();
             ExcelTool excelTool = new ExcelTool();
             FileTool fileTool = new FileTool();
-            try
-            {
-                excelTool.CreatEnumData();
-                Logger.Log("Create Enum Completed...");
-            }
-            catch (Exception ex)
-            {
-                Logger.Error($"EnumError:{ex.Message}");
-                Console.ReadKey();
-            }
-
-            fileTool.GetAllFiles(Config.I.excelPath);
+            fileTool.GetAllFiles("bin/Debug/net6.0/Excel");
 
             //Config.I.exportType = Config.ExportType.Bytes;
             for (int i = 0; i < fileTool.fileList.Count; i++)
@@ -42,8 +31,8 @@
                 }
             }
 
-            Logger.Log("TotalSeconds:" + (DateTime.Now.ToUniversalTime() - time).TotalSeconds);
-            Logger.Log("Press Any Key Exit!");
+            Console.WriteLine("转换完成！耗时: " + (DateTime.Now.ToUniversalTime() - time).TotalSeconds + "秒");
+            Console.WriteLine("按任意键退出...");
             Console.ReadKey();
         }
     }

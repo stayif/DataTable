@@ -29,45 +29,7 @@ namespace PerillaTable
         Dictionary<string, Dictionary<string, int>> enumTypesDic = new Dictionary<string, Dictionary<string, int>>();
         Dictionary<string, Dictionary<string, Int16>> enumTypesDicByte = new Dictionary<string, Dictionary<string, Int16>>();
 
-        public void CreatEnumData()
-        {
-            string path = Config.I.excelPath + "enum.xlsx";
-            string classPath = Config.I.classPath;
-            List<DataTable> result = ExcelToDataTable(path);
-
-            DataTable curSheet = result[0];
-
-            int columns = curSheet.Columns.Count;
-            int rows = curSheet.Rows.Count;
-
-            for (int j = 0; j < columns; ++j)
-            {
-                string enumStrTemp = enumStr;
-                string enumName = curSheet.Rows[0][j].ToString();
-                enumTypesDic.Add(enumName.ToLower(), new Dictionary<string, int>());
-                enumTypesDicByte.Add(enumName.ToLower(), new Dictionary<string, Int16>());
-                int count = 0;
-                Int16 countbyte = 0;
-                enumStrTemp = enumStrTemp.Replace("Type", UpperFirstLetter(enumName));
-
-                for (int i = 1; i < rows; ++i)
-                {
-                    if (curSheet.Rows[i][j].ToString() == "")
-                        break;
-                    string Type = curSheet.Rows[i][j].ToString();
-                    enumTypesDic[enumName.ToLower()].Add(Type.ToLower(), count++);
-                    enumTypesDicByte[enumName.ToLower()].Add(Type.ToLower(), (Int16)countbyte++);
-
-                    enumStrTemp += $@"    {UpperFirstLetter(Type)},
-";
-                }
-
-                enumStrTemp += @"}";
-                string data = File.ReadAllText(classPath + "EnumType.cs");
-                data += enumStrTemp;
-                File.WriteAllText(classPath + "EnumType.cs", data);
-            }
-        }
+        // 已移除枚举处理功能
 
 
         public void CreateDataTable(string path)
@@ -85,17 +47,9 @@ namespace PerillaTable
             {
                 DataTable curSheet = result[index];
 
-                //excel中包含多个sheet,sheet名为类型，忽略sheet名中包含"sheet"的表单;
-                if (tableNum > 1)
-                {
-                    className = curSheet.Rows[0][0].ToString().Split('#')[1];
-                }
-                //只有一个sheet的excel文件，文件名为类名;
-                else
-                {
-                    string[] tempS11 = path.Split('/');
-                    className = tempS11[tempS11.Length - 1].Split('.')[0];
-                }
+                // 直接使用Excel文件名作为类名
+                string[] tempS11 = path.Split('/');
+                className = tempS11[tempS11.Length - 1].Split('.')[0];
 
                 int columns = curSheet.Columns.Count;
                 int rows = curSheet.Rows.Count;
@@ -390,7 +344,7 @@ ErrorType:{dataType}
                 cshapClassStr += parseBystrStr;
                 cshapClassStr += parseBytesStr;
 
-                FileTool.WriteString($"{classPath}D{className}.cs", cshapClassStr);
+            FileTool.WriteString($"{classPath}{className}.cs", cshapClassStr);
                 #endregion
 
                 #region 生成数据文件
@@ -461,18 +415,14 @@ public enum EnumType
 
             List<DataTable> dataList = new List<DataTable>();
             int startRow = 0;
-            string tempPath = $"./{fileName.Split('/')[^1].Replace(".xlsx", "")}.xlsx";
-            if (File.Exists(tempPath))
-                File.Delete(tempPath);
-            File.Copy(fileName, tempPath);
-            var fs = new FileStream(tempPath, FileMode.Open, FileAccess.Read);
-
-            if (fileName.IndexOf(".xlsx") > 0) // 2007版本
-                workbook = new XSSFWorkbook(fs);
-            else if (fileName.IndexOf(".xls") > 0) // 2003版本
-                workbook = new HSSFWorkbook(fs);
-            fs.Close();
-            File.Delete(tempPath);
+            byte[] fileBytes = File.ReadAllBytes(fileName);
+            using (var ms = new MemoryStream(fileBytes))
+            {
+                if (fileName.IndexOf(".xlsx") > 0) // 2007版本
+                    workbook = new XSSFWorkbook(ms);
+                else if (fileName.IndexOf(".xls") > 0) // 2003版本
+                    workbook = new HSSFWorkbook(ms);
+            }
 
             try
             {
@@ -728,7 +678,7 @@ public enum EnumType
 
             jsonData = jsonData.Substring(0, jsonData.Length - 1) + "]";
 
-            FileTool.WriteString($"{Config.I.dataPath}/Json/D{className}.json", jsonData);
+            FileTool.WriteString($"bin/Debug/net6.0/DataTable/Json/{className}.json", jsonData);
             return jsonData;
         }
 
